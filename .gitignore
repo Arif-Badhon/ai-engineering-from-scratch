@@ -1,3 +1,10 @@
+# ==============================================================================
+# AI Engineering from Scratch - Core Git Ignore Rules
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Python Environment & Packaging
+# ------------------------------------------------------------------------------
 __pycache__/
 *.py[cod]
 *$py.class
@@ -11,27 +18,53 @@ dist/
 build/
 .eggs/
 
+# ------------------------------------------------------------------------------
+# 2. Python Testing, Linting & Notebook Caches
+# ------------------------------------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
 .ipynb_checkpoints/
 *.ipynb_metadata/
+.coverage
+htmlcov/
 
+# ------------------------------------------------------------------------------
+# 3. Node.js & Frontend Ecosystem
+# ------------------------------------------------------------------------------
 node_modules/
 .next/
 out/
-.vercel
+.vercel/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
+# ------------------------------------------------------------------------------
+# 4. Compiled Languages (Rust & Julia)
+# ------------------------------------------------------------------------------
+# Rust build artifacts
 target/
 Cargo.lock
 *.rlib
 
+# Julia cache & dependency artifacts
 *.deps
 *.ji
 
+# ------------------------------------------------------------------------------
+# 5. Environment Variables & Security (Secrets)
+# ------------------------------------------------------------------------------
 .env
 .env.local
 .env.*.local
 *.pem
 *.key
 
+# ------------------------------------------------------------------------------
+# 6. Operating System & IDE Caches
+# ------------------------------------------------------------------------------
 .DS_Store
 Thumbs.db
 *.swp
@@ -41,18 +74,30 @@ Thumbs.db
 .vscode/
 *.log
 
+# ------------------------------------------------------------------------------
+# 7. AI/ML Datasets, Model Weights & Run Logs
+# ------------------------------------------------------------------------------
 data/
 models/
 checkpoints/
 wandb/
 mlruns/
+lightning_logs/
+.cache/
+.huggingface/
+
+# Serialized Model Formats (large binary assets)
 *.pt
 *.pth
 *.onnx
 *.safetensors
 *.bin
 *.h5
-.gstack/
 
+# ------------------------------------------------------------------------------
+# 8. Project & AI Agent Specific Caches
+# ------------------------------------------------------------------------------
+.gstack/
 .link-cache.json
 .claude/
+

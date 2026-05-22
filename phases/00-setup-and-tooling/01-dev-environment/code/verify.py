@@ -15,11 +15,16 @@ CHECKS = [
 GPU_CHECKS = [
     ("PyTorch", lambda: __import__("torch"), None),
     (
-        "CUDA",
-        lambda: __import__("torch").cuda.is_available(),
-        lambda: __import__("torch").cuda.get_device_name(0) if __import__("torch").cuda.is_available() else "Not available",
+        "GPU Acceleration (CUDA/MPS)",
+        lambda: __import__("torch").cuda.is_available() or (
+            hasattr(__import__("torch").backends, "mps") and __import__("torch").backends.mps.is_available()
+        ),
+        lambda: "CUDA" if __import__("torch").cuda.is_available() else (
+            "MPS (Apple Silicon)" if hasattr(__import__("torch").backends, "mps") and __import__("torch").backends.mps.is_available() else "Not available"
+        ),
     ),
 ]
+
 
 
 def run_check(name, check_fn, detail_fn=None):
